@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -57,5 +58,12 @@ class AuthController extends Controller
     public function login()
     {
         return view('auth.login-custom');
+    }
+
+    public function getCidade($estado)
+    {
+        $url = Http::get("https://servicodados.ibge.gov.br/api/v1/localidades/estados/$estado/municipios");
+        $response = json_decode($url);
+        return response()->json($response);
     }
 }

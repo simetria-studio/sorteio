@@ -32,6 +32,8 @@ Route::get('/login-custom', [AuthController::class, 'login'])->name('login.custo
 
 Route::post('/save-number', [NumberController::class, 'store'])->name('save.number');
 
+Route::get('/cidade/{estado}', [AuthController::class, 'getCidade'])->name('get.cidade');
+
 Route::middleware('auth')->group(function () {
     Route::get('/numero/{number}', [NumberController::class, 'numberGet'])->name('number.get');
 });

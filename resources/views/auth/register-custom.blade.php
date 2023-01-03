@@ -15,9 +15,8 @@
                                 <div class="row mb-3">
                                     <label for="name" class="col-md-4 col-form-label text-md-end">CPF</label>
                                     <div class="col-md-6">
-                                        <input id="name" type="text"
-                                            class="form-control @error('cpf') is-invalid @enderror" name="cpf"
-                                            value="{{ old('cpf') }}" autocomplete="cpf">
+                                        <input type="text" class="form-control @error('cpf') is-invalid @enderror"
+                                            id="cpf" name="cpf" value="{{ old('cpf') }}" autocomplete="cpf">
 
                                         @error('cpf')
                                             <span class="invalid-feedback" role="alert">
@@ -86,9 +85,38 @@
                                 <div class="row mb-3">
                                     <label for="estado" class="col-md-4 col-form-label text-md-end">ESTADO</label>
                                     <div class="col-md-6">
-                                        <input id="estado" type="text"
-                                            class="form-control @error('estado') is-invalid @enderror" name="estado"
-                                            value="{{ old('estado') }}" autocomplete="estado">
+                                        <select id="estado" class="form-control @error('telefone') is-invalid @enderror"
+                                            name="estado">
+                                            <option>Selecione o estado</option>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                            <option value="EX">Estrangeiro</option>
+                                        </select>
 
                                         @error('estado')
                                             <span class="invalid-feedback" role="alert">
@@ -100,9 +128,10 @@
                                 <div class="row mb-3">
                                     <label for="name" class="col-md-4 col-form-label text-md-end">CIDADE</label>
                                     <div class="col-md-6">
-                                        <input id="cidade" type="text"
-                                            class="form-control @error('cidade') is-invalid @enderror" name="cidade"
-                                            value="{{ old('cidade') }}" autocomplete="cidade">
+                                        <select id="cidade"
+                                            class="form-control @error('telefone') is-invalid @enderror" name="cidade">
+                                            <option>Selecione a Cidade</option>
+                                        </select>
 
                                         @error('cidade')
                                             <span class="invalid-feedback" role="alert">
@@ -162,4 +191,42 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('#cpf').mask('000.000.000-00', {
+                reverse: true
+            });
+            $('#telefone').mask('(00) 00000-0000');
+
+            $('#estado').change(function() {
+                var estado = $(this).val();
+                if (estado) {
+                    $.ajax({
+                        type: "GET",
+                        url: `{{ url('cidade') }}/${estado}`,
+                        success: function(res) {
+                            if (res) {
+                                $("#cidade").empty();
+                                $("#cidade").append('<option>Selecione a Cidade</option>');
+                                $.each(res, function(key, value) {
+                                    $("#cidade").append('<option value="' + value.nome +
+                                        '">' +
+                                        value.nome +
+                                        '</option>');
+                                });
+
+
+                            } else {
+                                $("#cidade").empty();
+                            }
+                        }
+                    });
+                } else {
+                    $("#cidade").empty();
+                }
+            });
+        });
+    </script>
 @endsection
