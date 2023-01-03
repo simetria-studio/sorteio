@@ -206,6 +206,10 @@
                     $.ajax({
                         type: "GET",
                         url: `{{ url('cidade') }}/${estado}`,
+                        beforeSend: function() {
+                            $("#cidade").empty();
+                            $("#cidade").append('<option>Carregando...</option>');
+                        },
                         success: function(res) {
                             if (res) {
                                 $("#cidade").empty();
