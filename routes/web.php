@@ -1,9 +1,10 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\GenerateController;
 use App\Http\Controllers\NumberController;
+use App\Http\Controllers\GenerateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +17,11 @@ use App\Http\Controllers\NumberController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/generate', [GenerateController::class, 'generate'])->name('generate');
 
@@ -32,3 +31,7 @@ Route::post('/cadastro-store', [AuthController::class, 'registerStore'])->name('
 Route::get('/login-custom', [AuthController::class, 'login'])->name('login.custom');
 
 Route::post('/save-number', [NumberController::class, 'store'])->name('save.number');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/numero/{number}', [NumberController::class, 'numberGet'])->name('number.get');
+});

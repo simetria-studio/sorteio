@@ -7,7 +7,7 @@
                 <div class="card-custom">
                     <p>Bem vendo <span class="text-black-50 font-weight-bold name">{{ auth()->user()->name }}</span></p>
                     <div class="row my-5">
-                        <div class="col-6">
+                        <div class="col-12">
                             <div class="input-number d-flex flex-column align-items-center" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 <div>
@@ -19,18 +19,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 qr">
-                            <div class="input-number d-flex flex-column align-items-center">
-                                <div>
-                                    <i class="fa-solid fa-qrcode"></i>
-                                </div>
-                                <div>
-                                    <div id="qr-reader" style="width:500px"></div>
-                                    <div id="qr-reader-results"></div>
-                                </div>
-
-                            </div>
-                        </div>
+                
                         <div class="col-12">
                             <div class="my-4">
                                 <h5>Meus Numeros</h5>
@@ -100,39 +89,7 @@
                     }
                 })
             });
-            $(document).on('click', '.qr', function() {
-                function docReady(fn) {
-                    // see if DOM is already available
-                    if (document.readyState === "complete" ||
-                        document.readyState === "interactive") {
-                        // call on next available tick
-                        setTimeout(fn, 1);
-                    } else {
-                        document.addEventListener("DOMContentLoaded", fn);
-                    }
-                }
 
-                docReady(function() {
-                    var resultContainer = document.getElementById('qr-reader-results');
-                    var lastResult, countResults = 0;
-
-                    function onScanSuccess(decodedText, decodedResult) {
-                        if (decodedText !== lastResult) {
-                            ++countResults;
-                            lastResult = decodedText;
-                            // Handle on success condition with the decoded message.
-                            console.log(`Scan result ${decodedText}`, decodedResult);
-                        }
-                    }
-
-                    var html5QrcodeScanner = new Html5QrcodeScanner(
-                        "qr-reader", {
-                            fps: 10,
-                            qrbox: 250
-                        });
-                    html5QrcodeScanner.render(onScanSuccess);
-                });
-            });
         });
     </script>
 @endsection

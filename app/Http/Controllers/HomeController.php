@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sorteio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,11 @@ class HomeController extends Controller
     public function index()
     {
         $numeros = Sorteio::where('user_id', auth()->user()->id)->get();
+
+        $value = Cookie::get('numero');
+    
         return view('home', get_defined_vars());
     }
+
+
 }
