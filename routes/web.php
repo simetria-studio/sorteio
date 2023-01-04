@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NumberController;
+use App\Http\Controllers\PainelController;
 use App\Http\Controllers\GenerateController;
 
 /*
@@ -23,7 +24,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/generate', [GenerateController::class, 'generate'])->name('generate');
+
 
 Route::get('/cadastro', [AuthController::class, 'register'])->name('register.custom');
 Route::post('/cadastro-store', [AuthController::class, 'registerStore'])->name('register.custom.store');
@@ -36,4 +37,10 @@ Route::get('/cidade/{estado}', [AuthController::class, 'getCidade'])->name('get.
 
 Route::middleware('auth')->group(function () {
     Route::get('/numero/{number}', [NumberController::class, 'numberGet'])->name('number.get');
+});
+
+Route::middleware('auth')->middleware('email')->group(function () {
+    Route::get('/dashboard', [PainelController::class, 'index'])->name('painel.index');
+    Route::get('/gerarqr', [GenerateController::class, 'index'])->name('painel.gerarqr');
+    Route::post('/generate', [GenerateController::class, 'generate'])->name('generate');
 });

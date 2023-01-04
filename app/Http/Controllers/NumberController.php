@@ -45,11 +45,12 @@ class NumberController extends Controller
     {
         $numberExists = Number::where('number', $number)->exists();
 
-        Cookie::queue(Cookie::make('numero', $number, 60));
+        
 
         if ($numberExists) {
             $sorteioNum = Sorteio::where('number', $number)->first();
             if (!$sorteioNum) {
+                setCookie('numero', $number);
                 $sorteio = Sorteio::create([
                     'number' => $number,
                     'user_id' => auth()->user()->id,

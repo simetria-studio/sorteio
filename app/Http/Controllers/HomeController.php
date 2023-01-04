@@ -27,10 +27,18 @@ class HomeController extends Controller
     {
         $numeros = Sorteio::where('user_id', auth()->user()->id)->get();
 
-        $value = Cookie::get('numero');
-    
+        $number = $_COOKIE['numero'] ?? null;
+
+        if ($number) {
+            $sorteio = Sorteio::where('number', $number)->first();
+            if (!$sorteio) {
+                $sorteio = Sorteio::create([
+                    'number' => $number,
+                    'user_id' => auth()->user()->id,
+                ]);
+            }
+        }
+
         return view('home', get_defined_vars());
     }
-
-
 }
