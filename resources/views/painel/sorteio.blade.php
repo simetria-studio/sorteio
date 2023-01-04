@@ -4,12 +4,34 @@
     <div class="container my-5">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('generate') }}" method="post">
+                <form>
                     @csrf
-                    <button class="btn btn-primary generate" type="submit">SORTEAR</button>
+                    <button class="btn btn-primary sorteio" type="button">SORTEAR</button>
+                </form>
+                <div>
+                    <p class="sorteado">O numero sorteado foi: </p>
+                </div>
             </div>
-            </form>
+
         </div>
     </div>
-
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('.sorteio').click(function() {
+                $.ajax({
+                    url: "{{ route('sorteio') }}",
+                    type: "GET",
+                    data: {
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        $('.sorteado').text('O numero sorteado foi: ' + data.number);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

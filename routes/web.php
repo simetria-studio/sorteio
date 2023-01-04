@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NumberController;
 use App\Http\Controllers\PainelController;
+use App\Http\Controllers\SorteioController;
 use App\Http\Controllers\GenerateController;
 
 /*
@@ -43,4 +44,7 @@ Route::middleware('auth')->middleware('email')->group(function () {
     Route::get('/dashboard', [PainelController::class, 'index'])->name('painel.index');
     Route::get('/gerarqr', [GenerateController::class, 'index'])->name('painel.gerarqr');
     Route::post('/generate', [GenerateController::class, 'generate'])->name('generate');
+    Route::get('/sorteio', [SorteioController::class, 'index'])->name('painel.sorteio');
+    Route::get('/sorteio-number', [SorteioController::class, 'sorteio'])->name('sorteio');
+    Route::get('/sorteados', [SorteioController::class, 'sorteados'])->name('painel.sorteados');
 });
