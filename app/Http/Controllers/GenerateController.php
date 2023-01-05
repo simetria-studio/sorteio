@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use ZipArchive;
 
+use Illuminate\Support\Facades\File;
 use App\Models\Number;
 use BaconQrCode\Writer;
 use Illuminate\Http\Request;
@@ -34,6 +35,7 @@ class GenerateController extends Controller
         }
         $folderPath = 'images';
 
+        $date = date("H:i:s");
         // Nome do arquivo zip
         $zipFileName = 'arquivo.zip';
 
@@ -49,6 +51,7 @@ class GenerateController extends Controller
             // Fecha o arquivo zip
             $zip->close();
         }
+
         return response()->download($zipFileName);
     }
 }

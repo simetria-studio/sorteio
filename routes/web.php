@@ -7,6 +7,7 @@ use App\Http\Controllers\NumberController;
 use App\Http\Controllers\PainelController;
 use App\Http\Controllers\SorteioController;
 use App\Http\Controllers\GenerateController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +48,5 @@ Route::middleware('auth')->middleware('email')->group(function () {
     Route::get('/sorteio', [SorteioController::class, 'index'])->name('painel.sorteio');
     Route::get('/sorteio-number', [SorteioController::class, 'sorteio'])->name('sorteio');
     Route::get('/sorteados', [SorteioController::class, 'sorteados'])->name('painel.sorteados');
+    Route::get('/usuarios', [UserController::class, 'index'])->name('painel.users');
 });

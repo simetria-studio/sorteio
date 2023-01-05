@@ -37,6 +37,12 @@
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                @if (auth()->user()->email == 'felipephplow@gmail.com')
+                    <div>
+                        <a href="{{ route('painel.index') }}"> <button class="btn btn-dark">Entrar no
+                                dashboard</button></a>
+                    </div>
+                @endif
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->

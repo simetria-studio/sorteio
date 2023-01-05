@@ -63,18 +63,18 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="{{ route('painel.index') }}" class="nav-item nav-link active"><i
+                    <a href="{{ route('painel.index') }}" class="nav-item nav-link {{ request()->routeIs('painel.index') ? 'active' : '' }}"><i
                             class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{ route('painel.gerarqr') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Gerar QRCODE</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                                class="far fa-file-alt me-2"></i>Sorteios</a>
+                    <a href="{{ route('painel.gerarqr') }}" class="nav-item nav-link {{ request()->routeIs('painel.gerarqr') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Gerar QRCODE</a>
+                    <div class="nav-item dropdown ">
+                        <a href="#" class="nav-link dropdown-toggle {{ request()->routeIs('painel.sorteio') ? 'active' : '' }} {{ request()->routeIs('painel.sorteados') ? 'active' : '' }}" data-bs-toggle="dropdown"><i
+                                class="far fa-file-alt me-2 "></i>Sorteios</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{ route('painel.sorteio') }}" class="dropdown-item">Sortear</a>
-                            <a href="{{ route('painel.sorteados') }}" class="dropdown-item">Sorteados</a>
+                            <a href="{{ route('painel.sorteio') }}" class="dropdown-item ">Sortear</a>
+                            <a href="{{ route('painel.sorteados') }}" class="dropdown-item ">Sorteados</a>
                         </div>
                     </div>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Usuários</a>
+                    <a href="{{ route('painel.users') }}" class="nav-item nav-link {{ request()->routeIs('painel.users') ? 'active' : '' }}"><i class="fa fa-chart-bar me-2"></i>Usuários</a>
                 </div>
             </nav>
         </div>

@@ -107,3 +107,13 @@ body {
     background-color: #fff;
     margin-bottom: 10px;
 }
+
+@media screen and (min-width: 900px) {
+    .auth-card{
+        max-width: 80% !important;
+    }
+    .main-auth {
+        margin-top: 5% !important;
+    }
+
+}
