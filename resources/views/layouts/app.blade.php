@@ -103,18 +103,17 @@
 
     <script>
         $(document).ready(function() {
-            setInterval(minhaFuncao, 60000);
-        });
+            setInterval(function() {
+                $.ajax({
+                    url: "{{ route('delete.all') }}",
+                    type: "GET",
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+            }, 10000);
 
-        function minhaFuncao() {
-            $.ajax({
-                url: "{{ route('delete.all') }}",
-                type: "GET",
-                success: function(data) {
-                    console.log(data);
-                }
-            });
-        }
+        });
     </script>
 
     @if (Session::has('success'))
