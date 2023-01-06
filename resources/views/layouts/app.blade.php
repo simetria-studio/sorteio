@@ -101,18 +101,6 @@
     <script src="{{ asset('user/js/main.js') }}"></script>
     @yield('js')
 
-    <script>
-        setInterval(function() {
-            console.log('teste');
-            $.ajax({
-                url: "{{ route('delete.all') }}",
-                type: "GET",
-                success: function(data) {
-                    console.log(data);
-                }
-            });
-        }, 10000);
-    </script>
 
     @if (Session::has('success'))
         <script type="text/javascript">
