@@ -24,9 +24,14 @@ class GenerateController extends Controller
         $url = 'https://www.abateselect.com.br//numero/';
         $numbers = [];
         while (count($numbers) < $request->qty) {
-            $numbers[] = random_int(1000, 1999);
-            $numbers = array_unique($numbers);
+            $number = random_int(1000, 1999);
+            $exists = Number::where('number', $number)->exists();
+            if (!$exists) {
+                $numbers[] = $number;
+            }
         }
+        $numbers = array_unique($numbers);
+        
         foreach ($numbers as $number) {
             $save = Number::create([
                 'number' => $number,
