@@ -20,7 +20,7 @@ class EmailMiddleware
         $email = $request->user()->email ?? null;
 
         if ($email) {
-            if ($email == 'felipephplow@gmail.com') {
+            if ($email == 'admin@abateselect.com.br') {
                 // Si el correo electrónico del usuario es igual al correo electrónico permitido, permite el acceso a la ruta
                 return $next($request);
             }

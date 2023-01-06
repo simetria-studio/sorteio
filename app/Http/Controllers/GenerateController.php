@@ -20,7 +20,8 @@ class GenerateController extends Controller
     }
     public function generate(Request $request)
     {
-        $url = 'http://192.168.18.2:8001/numero/';
+        // $url = 'http://192.168.18.2:8001/numero/';
+        $url = 'https://www.abateselect.com.br//numero/';
         $numbers = [];
         while (count($numbers) < $request->qty) {
             $numbers[] = random_int(1000, 1999);

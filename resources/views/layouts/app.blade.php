@@ -37,7 +37,7 @@
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                @if (auth()->user()->email == 'felipephplow@gmail.com')
+                @if (auth()->user()->email == 'admin@abateselect.com.br')
                     <div>
                         <a href="{{ route('painel.index') }}"> <button class="btn btn-dark">Entrar no
                                 dashboard</button></a>
