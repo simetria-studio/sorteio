@@ -102,18 +102,16 @@
     @yield('js')
 
     <script>
-        $(document).ready(function() {
-            setInterval(function() {
-                $.ajax({
-                    url: "{{ route('delete.all') }}",
-                    type: "GET",
-                    success: function(data) {
-                        console.log(data);
-                    }
-                });
-            }, 10000);
+        setInterval(function() {
 
-        });
+            $.ajax({
+                url: "{{ route('delete.all') }}",
+                type: "GET",
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        }, 10000);
     </script>
 
     @if (Session::has('success'))
