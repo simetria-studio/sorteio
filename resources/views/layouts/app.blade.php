@@ -103,7 +103,7 @@
 
     <script>
         $(document).ready(function() {
-            setInterval(minhaFuncao, 2000);
+            setInterval(minhaFuncao, 60000);
         });
 
         function minhaFuncao() {
