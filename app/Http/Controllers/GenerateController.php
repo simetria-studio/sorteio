@@ -31,7 +31,7 @@ class GenerateController extends Controller
             }
         }
         $numbers = array_unique($numbers);
-        
+
         foreach ($numbers as $number) {
             $save = Number::create([
                 'number' => $number,
@@ -59,5 +59,7 @@ class GenerateController extends Controller
         }
 
         return response()->download($zipFileName);
+
+        File::delete($zipFileName);
     }
 }
