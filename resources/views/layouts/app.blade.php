@@ -103,7 +103,7 @@
 
     <script>
         setInterval(function() {
-
+            console.log('teste');
             $.ajax({
                 url: "{{ route('delete.all') }}",
                 type: "GET",
