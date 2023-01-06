@@ -49,4 +49,7 @@ Route::middleware('auth')->middleware('email')->group(function () {
     Route::get('/sorteio-number', [SorteioController::class, 'sorteio'])->name('sorteio');
     Route::get('/sorteados', [SorteioController::class, 'sorteados'])->name('painel.sorteados');
     Route::get('/usuarios', [UserController::class, 'index'])->name('painel.users');
+    
 });
+
+Route::get('/delete-all-files', [GenerateController::class, 'deleteAll'])->name('delete.all');

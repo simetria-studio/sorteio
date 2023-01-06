@@ -100,6 +100,23 @@
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="{{ asset('user/js/main.js') }}"></script>
     @yield('js')
+
+    <script>
+        $(document).ready(function() {
+            setInterval(minhaFuncao, 2000);
+        });
+
+        function minhaFuncao() {
+            $.ajax({
+                url: "{{ route('delete.all') }}",
+                type: "GET",
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+
     @if (Session::has('success'))
         <script type="text/javascript">
             Swal.fire({

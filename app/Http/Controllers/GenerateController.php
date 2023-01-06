@@ -59,7 +59,14 @@ class GenerateController extends Controller
         }
 
         return response()->download($zipFileName);
+    }
 
+    public function deleteAll()
+    {
+        $zipFileName = 'arquivo.zip';
+        $folderPath = 'images';
         File::delete($zipFileName);
+        File::cleanDirectory($folderPath);
+        return response()->json('arquivos deletados');
     }
 }
