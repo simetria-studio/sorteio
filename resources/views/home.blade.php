@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card-custom">
-                    <p>Bem vendo <span class="text-black-50 font-weight-bold name">{{ auth()->user()->name }}</span></p>
+                    <p>Bem vindo <span class="text-black-50 font-weight-bold name">{{ auth()->user()->name }}</span></p>
                     <div class="row my-5">
                         <div class="col-12">
                             <div class="input-number d-flex flex-column align-items-center" data-bs-toggle="modal"
