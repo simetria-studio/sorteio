@@ -36,6 +36,9 @@
                     </div>
                 </div>
             </div>
+            <div class="imgs">
+                <img src="{{ asset('auth/img/7.jpg') }}" alt="" class="auth-logo">
+            </div>
         </div>
     </div>
 

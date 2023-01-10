@@ -125,3 +125,25 @@ button#html5-qrcode-button-camera-permission {
     padding: 15px;
     border-radius: 10px;
 }
+
+.auth-logo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 900px) {
+    .imgs {
+        display: grid;
+        place-items: center;
+        place-content: center;
+    }
+
+    .auth-logo {
+        width: 50%;
+        text-align: center;
+        margin-bottom: 20px;
+
+    }
+
+}

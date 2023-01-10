@@ -17,3 +17,4 @@ $(document).ready(function () {
     });
 });
 
+// array com as URLs das imagens

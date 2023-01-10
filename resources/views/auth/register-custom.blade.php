@@ -5,7 +5,7 @@
             <div class="col-md-8">
                 <div class="">
                     <div class="title">
-                        <h2>abate select</h2>
+                        <img src="{{ asset('auth/img/7.jpg') }}" alt="Logo" class="auth-logo">
                         <p>cadastro</p>
                     </div>
                     <div class="card-body">

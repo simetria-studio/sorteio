@@ -101,7 +101,41 @@
     <script src="{{ asset('user/js/main.js') }}"></script>
     @yield('js')
 
+    <script>
+        var images = [
+            '{{ asset('auth/img/1.jpg') }}',
+            '{{ asset('auth/img/2.jpg') }}',
+            '{{ asset('auth/img/3.jpg') }}',
+            '{{ asset('auth/img/4.jpg') }}',
+            '{{ asset('auth/img/5.jpg') }}',
+            '{{ asset('auth/img/6.jpg') }}',
+            '{{ asset('auth/img/7.jpg') }}',
+            '{{ asset('auth/img/8.jpg') }}',
+            '{{ asset('auth/img/9.jpg') }}',
+            '{{ asset('auth/img/10.jpg') }}',
+            '{{ asset('auth/img/11.jpg') }}',
+            '{{ asset('auth/img/12.jpg') }}',
 
+        ];
+
+        // índice da imagem atual
+        var currentIndex = 0;
+
+        // seleciona a imagem no HTML
+        var $image = $(".auth-logo");
+
+        // define a função para alternar as imagens
+        function changeImage() {
+            // atualiza o source da imagem
+            $image.attr("src", images[currentIndex]);
+
+            // incrementa o índice da imagem atual
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        // chama a função de alteração de imagem a cada 20 segundos
+        setInterval(changeImage, 2000);
+    </script>
     @if (Session::has('success'))
         <script type="text/javascript">
             Swal.fire({
