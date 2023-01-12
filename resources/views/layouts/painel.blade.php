@@ -145,7 +145,7 @@
     <script src="{{ asset('painel/js/main.js') }}"></script>
     @yield('js')
 
-    <script>
+    {{-- <script>
         setInterval(function() {
             
             $.ajax({
@@ -156,7 +156,7 @@
                 }
             });
         }, 10000);
-    </script>
+    </script> --}}
 </body>
 
 </html>
