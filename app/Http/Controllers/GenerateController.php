@@ -23,8 +23,8 @@ class GenerateController extends Controller
         // $url = 'http://192.168.18.2:8001/numero/';
         $url = 'https://www.abateselect.com.br/numero/';
         $numbers = [];
-        while (count($numbers) < $request->qty) {
-            $number = random_int(1000, 1999);
+        while (count($numbers) < 500) {
+            $number = random_int(1000, 9999);
             $exists = Number::where('number', $number)->exists();
             if (!$exists) {
                 $numbers[] = $number;
